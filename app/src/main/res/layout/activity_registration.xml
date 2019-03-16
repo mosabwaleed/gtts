@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorAccent"
+    android:background="@drawable/gradiantback"
     android:orientation="vertical"
     tools:context=".Registration">
 
@@ -15,54 +15,84 @@
         app:srcCompat="@drawable/logo" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="150dp"
         android:background="@android:color/background_light"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name" />
+        android:hint="Name"
+        android:inputType="textPersonName" />
 
     <EditText
-        android:id="@+id/editText5"
+        android:id="@+id/id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:background="@android:color/background_light"
         android:ems="10"
-        android:inputType="phone"
-        android:text="PhoneNumber" />
+        android:hint="Your ID"
+        android:inputType="phone" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/pass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Passowrd"
+        android:layout_marginTop="10dp"
+        android:background="@android:color/background_light"
+        android:inputType="textPassword" />
+
+    <EditText
+        android:id="@+id/repass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Re Password"
+        android:background="@android:color/background_light"
+        android:layout_marginTop="10dp"
+        android:inputType="textPassword" />
+
+    <EditText
+        android:id="@+id/phone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:background="@android:color/background_light"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Company" />
+        android:hint="PhoneNumber"
+        android:inputType="phone" />
 
     <EditText
-        android:id="@+id/editText4"
+        android:id="@+id/company"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:background="@android:color/background_light"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Career" />
+        android:hint="Company"
+        android:inputType="textPersonName" />
 
     <EditText
-        android:id="@+id/editText6"
+        android:id="@+id/career"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:background="@android:color/background_light"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Mager" />
+        android:hint="Career"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/major"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@android:color/background_light"
+        android:ems="10"
+        android:hint="Major"
+        android:inputType="textPersonName" />
 
     <Button
         android:id="@+id/button"

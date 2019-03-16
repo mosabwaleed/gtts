@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorAccent"
+    android:background="@drawable/gradiantback"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
@@ -22,8 +22,8 @@
         android:layout_marginTop="100dp"
         android:background="@android:color/background_light"
         android:ems="10"
+        android:hint="id"
         android:inputType="textPersonName"
-        android:text="id"
         android:visibility="visible" />
 
     <EditText
