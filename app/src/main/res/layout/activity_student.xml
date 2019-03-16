@@ -23,4 +23,58 @@
         android:text="Name"
         android:textColor="@android:color/background_light"
         android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="id"
+        android:textColor="@android:color/background_light"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="career"
+        android:textColor="@android:color/background_light"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="major"
+        android:textColor="@android:color/background_light"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Company"
+        android:textColor="@android:color/background_light"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="150dp"
+        android:layout_marginTop="80dp"
+        android:paddingLeft="0dp"
+        android:text="Rebot" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="150dp"
+        android:layout_marginTop="30dp"
+        android:text="Messages" />
+
 </LinearLayout>
