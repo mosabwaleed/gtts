@@ -8,6 +8,7 @@
     android:orientation="vertical"
     tools:context=".Registration">
 
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
@@ -25,6 +26,17 @@
         android:inputType="textPersonName" />
 
     <EditText
+        android:id="@+id/email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/common_google_signin_btn_text_dark_default"
+        android:ems="10"
+        android:layout_marginTop="10dp"
+        android:hint="email"
+        android:inputType="textEmailAddress"
+         />
+
+    <EditText
         android:id="@+id/id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -38,20 +50,20 @@
         android:id="@+id/pass"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Passowrd"
         android:layout_marginTop="10dp"
         android:background="@android:color/background_light"
+        android:ems="10"
+        android:hint="Passowrd"
         android:inputType="textPassword" />
 
     <EditText
         android:id="@+id/repass"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@android:color/background_light"
         android:ems="10"
         android:hint="Re Password"
-        android:background="@android:color/background_light"
-        android:layout_marginTop="10dp"
         android:inputType="textPassword" />
 
     <EditText
@@ -98,6 +110,6 @@
         android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="60dp"
         android:text="sign up" />
 </LinearLayout>
