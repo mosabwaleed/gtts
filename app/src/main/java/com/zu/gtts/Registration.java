@@ -21,7 +21,6 @@ public class Registration extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
-
         Name=findViewById(R.id.name);
         Id=findViewById(R.id.id);
         Email=findViewById(R.id.email);
@@ -45,7 +44,6 @@ public class Registration extends AppCompatActivity {
                 final String career=Career.getText().toString();
                 final String major=Major.getText().toString();
                 final String email=Email.getText().toString();
-
                 if( email.isEmpty()||name.isEmpty() || pass.isEmpty() || id.isEmpty()||repass.isEmpty()||phone.isEmpty()||career.isEmpty()||company.isEmpty()||major.isEmpty())
                 {
                     ShowMessage("please verify all filed");
@@ -57,7 +55,6 @@ public class Registration extends AppCompatActivity {
             }
         );
 }
-
     private void CreateuserAccount(String email, String pass) {
 
         mAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -65,17 +62,14 @@ public class Registration extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     ShowMessage("Account create");
-
                 }
                 else {
-
                     ShowMessage("Account creation field"+task.getException());
                     sign_up.setVisibility(View.VISIBLE);
                 }
             }
         }) ;
     }
-
     private void ShowMessage(String Message) {
         Toast.makeText(getApplicationContext(),Message,Toast.LENGTH_LONG).show();
     }
