@@ -54,7 +54,6 @@ public class Registration extends AppCompatActivity {
                 CreateuserAccount(email,pass);
                  }
                 }
-
             }
         );
 }
