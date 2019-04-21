@@ -31,4 +31,9 @@ dependencies {
     implementation 'com.android.support:gridlayout-v7:28.0.0'
     implementation 'com.android.support:design:28.0.0'
     implementation 'com.google.firebase:firebase-core:16.0.8'
+    implementation  'com.facebook.android:facebook-android-sdk:4.42.0'
+    implementation 'com.facebook.android:account-kit-sdk:4.39.0'
+    implementation 'com.google.android.gms:play-services-gcm:16.1.0'
+    implementation 'com.google.android.gms:play-services-location:16.0.0'
+    implementation 'com.google.android.gms:play-services-auth:16.0.1'
 }

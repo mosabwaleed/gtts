@@ -6,7 +6,8 @@
     android:background="@drawable/gradiantback"
     android:orientation="vertical"
     android:layout_height="match_parent"
-    tools:context=".post_login">
+    tools:context=".post_login"
+    android:layout_margin="10dp">
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
@@ -14,22 +15,22 @@
         app:srcCompat="@drawable/logo" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/logphone"
         android:layout_width="421dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="150"
+        android:layout_marginTop="230dp"
         android:ems="10"
-        android:hint="Phone nember"
+        android:hint="phone number"
         android:inputType="phone" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="log in" />
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Registration" />
