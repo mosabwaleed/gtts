@@ -14,19 +14,11 @@
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/logo" />
 
-    <EditText
-        android:id="@+id/logphone"
-        android:layout_width="421dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="230dp"
-        android:ems="10"
-        android:hint="phone number"
-        android:inputType="phone" />
-
     <Button
         android:id="@+id/login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="250dp"
         android:text="log in" />
 
     <Button

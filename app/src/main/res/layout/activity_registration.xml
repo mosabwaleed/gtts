@@ -47,36 +47,6 @@
         android:inputType="phone" />
 
     <EditText
-        android:id="@+id/pass"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="@android:color/background_light"
-        android:ems="10"
-        android:hint="Passowrd"
-        android:inputType="textPassword" />
-
-    <EditText
-        android:id="@+id/repass"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="@android:color/background_light"
-        android:ems="10"
-        android:hint="Re Password"
-        android:inputType="textPassword" />
-
-    <EditText
-        android:id="@+id/phone"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="@android:color/background_light"
-        android:ems="10"
-        android:hint="PhoneNumber"
-        android:inputType="phone" />
-
-    <EditText
         android:id="@+id/company"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -110,6 +80,6 @@
         android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="20dp"
         android:text="sign up" />
 </LinearLayout>

@@ -38,7 +38,7 @@ import com.facebook.accountkit.ui.LoginType;
 import java.util.concurrent.TimeUnit;
 
 public class post_login extends AppCompatActivity {
-    EditText logphone;
+
     Button login,register;
     public static final String TAG = "mosab";
     public String mVerificationId;
@@ -52,10 +52,11 @@ public class post_login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_login);
         accessToken = AccountKit.getCurrentAccessToken();
-        logphone = findViewById(R.id.logphone);
+
         login = findViewById(R.id.login);
         register = findViewById(R.id.register);
         mAuth = FirebaseAuth.getInstance();
+
         final Intent intent = new Intent(post_login.this, AccountKitActivity.class);
         AccountKitConfiguration.AccountKitConfigurationBuilder configurationBuilder =
                 new AccountKitConfiguration.AccountKitConfigurationBuilder(
@@ -66,33 +67,13 @@ public class post_login extends AppCompatActivity {
                 AccountKitActivity.ACCOUNT_KIT_ACTIVITY_CONFIGURATION,
                 configurationBuilder.build());
         startActivityForResult(intent, APP_REQUEST_CODE);
-        logphone.setText("+9627");
-        Selection.setSelection(logphone.getText(), logphone.getText().length());
-        logphone.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
 
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-            }
 
-            @Override
-            public void afterTextChanged(Editable s) {
-                if (!s.toString().startsWith("+9627")) {
-                    logphone.setText("+9627");
-                    Selection.setSelection(logphone.getText(), logphone.getText().length());
-                }
-
-            }
-        });
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //phoneauth(logphone.getText().toString().trim());
-
-
             }
         });
 
@@ -141,12 +122,6 @@ public class post_login extends AppCompatActivity {
                                 "Success:%s...",
                                 loginResult.getAuthorizationCode().substring(0,10));
                     }
-
-                    // If you have an authorization code, retrieve it from
-                    // loginResult.getAuthorizationCode()
-                    // and pass it to your server and exchange it for an access token.
-
-                    // Success! Start your next activity...
                     startActivity(new Intent(post_login.this,student.class));
                 }
 

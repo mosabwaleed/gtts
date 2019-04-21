@@ -1,5 +1,6 @@
 package com.zu.gtts;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,16 +18,15 @@ public class Registration extends AppCompatActivity {
     EditText Name,Id,Pass,Repass,Phone,Company,Career,Major,Email;
     Button sign_up;
     FirebaseAuth mAuth;
+    SharedPreference sharedPreference;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
+        sharedPreference = new SharedPreference();
         Name=findViewById(R.id.name);
         Id=findViewById(R.id.id);
         Email=findViewById(R.id.email);
-        Pass=findViewById(R.id.pass);
-        Repass=findViewById(R.id.repass);
-        Phone=findViewById(R.id.phone);
         Company=findViewById(R.id.company);
         Career=findViewById(R.id.career);
         Major=findViewById(R.id.major);
@@ -34,43 +34,28 @@ public class Registration extends AppCompatActivity {
         sign_up.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                sign_up.setVisibility(View.INVISIBLE);
                 final String name =Name.getText().toString();
-                final String pass=Pass.getText().toString();
                 final String id=Id.getText().toString();
-                final String repass=Repass.getText().toString();
-                final String  phone= Phone.getText().toString();
                 final String company=Company.getText().toString();
                 final String career=Career.getText().toString();
                 final String major=Major.getText().toString();
                 final String email=Email.getText().toString();
-                if( email.isEmpty()||name.isEmpty() || pass.isEmpty() || id.isEmpty()||repass.isEmpty()||phone.isEmpty()||career.isEmpty()||company.isEmpty()||major.isEmpty())
-                {
-                    ShowMessage("please verify all filed");
-                    sign_up.setVisibility(View.VISIBLE); }
+                if( !(email.isEmpty()||name.isEmpty()  || id.isEmpty()||career.isEmpty()||company.isEmpty()||major.isEmpty()))
+                { sharedPreference.addFavorite(Registration.this,new Info(id,email,company,career,major,name));
+                startActivity(new Intent(Registration.this,post_login.class));}
                  else {
-                CreateuserAccount(email,pass);
+                     Toast.makeText(Registration.this,"check your entry",Toast.LENGTH_LONG).show();
                  }
                 }
             }
         );
 }
-    private void CreateuserAccount(String email, String pass) {
 
-        mAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()){
-                    ShowMessage("Account create");
-                }
-                else {
-                    ShowMessage("Account creation field"+task.getException());
-                    sign_up.setVisibility(View.VISIBLE);
-                }
-            }
-        }) ;
-    }
-    private void ShowMessage(String Message) {
-        Toast.makeText(getApplicationContext(),Message,Toast.LENGTH_LONG).show();
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if(sharedPreference.getFavorites(Registration.this).size()==1){
+            startActivity(new Intent(Registration.this,post_login.class));
+        }
     }
 }

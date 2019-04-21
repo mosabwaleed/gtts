@@ -14,9 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".verify_code"></activity>
-        <activity android:name=".Registration" />
+        <activity android:name=".post_login" />
         <activity android:name=".student" />
-        <activity android:name=".post_login">
+        <activity android:name=".Registration">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
