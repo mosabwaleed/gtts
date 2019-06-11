@@ -1,15 +1,24 @@
 package com.zu.gtts;
 
 public class Info {
-    String id,email,company,career,major,name;
+    String id,email,company,career,major,name,phone;
 
-    public Info(String id, String email, String company, String career, String major,String name) {
+    public Info(String id, String email, String company, String career, String major,String name,String phone) {
         this.id = id;
         this.email = email;
         this.company = company;
         this.career = career;
         this.major = major;
         this.name =name;
+        this.phone = phone;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public String getId() {

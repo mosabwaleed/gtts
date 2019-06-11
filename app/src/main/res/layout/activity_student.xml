@@ -60,29 +60,31 @@
         android:textColor="@android:color/background_light"
         android:textSize="18sp" />
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/phone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Phone"
+        android:textColor="@android:color/background_light"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/report"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_marginTop="50dp"
-        android:orientation="horizontal"
-        android:layout_gravity="center">
+        android:background="@drawable/com_facebook_tooltip_blue_background"
+        android:text="Report" />
 
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="20dp"
-            android:text="Messages"
-            />
-
-        <Button
-            android:id="@+id/button3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="150dp"
-            android:text="Report" />
-    </LinearLayout>
+    <Button
+        android:id="@+id/location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/com_facebook_tooltip_blue_background"
+        android:text="Send Location" />
 
 </LinearLayout>

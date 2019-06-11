@@ -1,8 +1,10 @@
 package com.zu.gtts;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -46,6 +48,9 @@ public class post_login extends AppCompatActivity {
     public PhoneAuthProvider.ForceResendingToken mResendToken;
     public AccessToken accessToken;
     public static int APP_REQUEST_CODE = 99;
+    String phoneNumberString ;
+    SharedPreference sharedPreference;
+    SharedPreference_doctor sharedPreference_doctor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,47 +62,64 @@ public class post_login extends AppCompatActivity {
         register = findViewById(R.id.register);
         mAuth = FirebaseAuth.getInstance();
 
-        final Intent intent = new Intent(post_login.this, AccountKitActivity.class);
-        AccountKitConfiguration.AccountKitConfigurationBuilder configurationBuilder =
-                new AccountKitConfiguration.AccountKitConfigurationBuilder(
-                        LoginType.PHONE,
-                        AccountKitActivity.ResponseType.CODE); // or .ResponseType.TOKEN
-        // ... perform additional configuration ...
-        intent.putExtra(
-                AccountKitActivity.ACCOUNT_KIT_ACTIVITY_CONFIGURATION,
-                configurationBuilder.build());
-        startActivityForResult(intent, APP_REQUEST_CODE);
+        sharedPreference = new SharedPreference();
+        sharedPreference_doctor = new SharedPreference_doctor();
+
+
 
 
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //phoneauth(logphone.getText().toString().trim());
+                new AlertDialog.Builder(post_login.this)
+                        .setTitle("Choose please")
+                .setMessage("what do U want login AS ?")
+                        .setPositiveButton("Doctor", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent intent = new Intent(post_login.this,student_login.class);
+                                intent.putExtra("key","doctors");
+                                startActivity(intent);
+
+
+
+                            }
+                        })
+                        .setNegativeButton("Student", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent intent = new Intent(post_login.this,student_login.class);
+                                intent.putExtra("key","student");
+                                startActivity(intent);
+
+                            }
+                        })
+                        .setNeutralButton("Supervisor", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                            }
+                        }).show();
+            }
+        });
+        register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Intent intent = new Intent(post_login.this, AccountKitActivity.class);
+                AccountKitConfiguration.AccountKitConfigurationBuilder configurationBuilder =
+                        new AccountKitConfiguration.AccountKitConfigurationBuilder(
+                                LoginType.PHONE,
+                                AccountKitActivity.ResponseType.TOKEN); // or .ResponseType.TOKEN
+                // ... perform additional configuration ...
+                intent.putExtra(
+                        AccountKitActivity.ACCOUNT_KIT_ACTIVITY_CONFIGURATION,
+                        configurationBuilder.build());
+                startActivityForResult(intent, APP_REQUEST_CODE);
+                //startActivity(new Intent(post_login.this,Registration.class));
             }
         });
 
-        AccountKit.getCurrentAccount(new AccountKitCallback<Account>() {
-            @Override
-            public void onSuccess(final Account account) {
-                // Get Account Kit ID
-                String accountKitId = account.getId();
-
-                // Get phone number
-                PhoneNumber phoneNumber = account.getPhoneNumber();
-                if (phoneNumber != null) {
-                    String phoneNumberString = phoneNumber.toString();
-                }
-
-                // Get email
-                String email = account.getEmail();
-            }
-
-            @Override
-            public void onError(final AccountKitError error) {
-                // Handle Error
-            }
-        });
     }
 
     @Override
@@ -117,85 +139,59 @@ public class post_login extends AppCompatActivity {
                 } else {
                     if (loginResult.getAccessToken() != null) {
                         toastMessage = "Success:" + loginResult.getAccessToken().getAccountId();
-                    } else {
-                        toastMessage = String.format(
-                                "Success:%s...",
-                                loginResult.getAuthorizationCode().substring(0,10));
+                        AccountKit.getCurrentAccount(new AccountKitCallback<Account>() {
+                            @Override
+                            public void onSuccess(Account account) {
+                                PhoneNumber phoneNumber = account.getPhoneNumber();
+                                if (phoneNumber != null) {
+                                    phoneNumberString = phoneNumber.toString();
+                                    System.out.println(phoneNumberString+"mosab2");
+                                    System.out.println(phoneNumberString);
+                                    Intent intent = new Intent(post_login.this,Registration.class);
+                                    intent.putExtra("phone",phoneNumberString);
+                                    startActivity(intent);
+                                }
+                            }
+
+                            @Override
+                            public void onError(AccountKitError accountKitError) {
+                                System.out.println(accountKitError.toString());
+
+                            }
+                        });
+
                     }
-                    startActivity(new Intent(post_login.this,student.class));
                 }
 
+
                 // Surface the result to your user in an appropriate way.
-                Toast.makeText(
-                        this,
-                        toastMessage,
-                        Toast.LENGTH_LONG)
-                        .show();
+//                Toast.makeText(this, toastMessage, Toast.LENGTH_LONG).show();
+//                System.out.println(phoneNumberString);
+//                Intent intent = new Intent(post_login.this,Registration.class);
+//                intent.putExtra("phone",phoneNumberString);
+//                startActivity(intent);
+
+
             }
         }
-    //    private void phoneauth(String phoneNumber) {
-//        if (phoneNumber.equals("")) {
-//            Toast.makeText(post_login.this,"Phone Number Can't Be Empty",Toast.LENGTH_SHORT).show();
-//            logphone.setError("phone number can't be empty");
-//        } else if (phoneNumber.length() < 13 || phoneNumber.length() > 13) {
-//            logphone.setError("Mobile Must and just 13 Digit");
-//            Toast.makeText(post_login.this,"Mobile just 13 Digit",Toast.LENGTH_SHORT).show();
-//        } else {
-//            PhoneAuthProvider.getInstance().verifyPhoneNumber(phoneNumber, 60, TimeUnit.SECONDS, this,
-//                    new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
-//                @Override
-//                public void onVerificationCompleted(PhoneAuthCredential credential) {
-//                    Log.d(TAG, "onVerificationCompleted:" + credential);
-//                    signInWithPhoneAuthCredential(credential);
-//                }
-//                @Override
-//                public void onVerificationFailed(FirebaseException e) {
-//                    // This callback is invoked in an invalid request for verification is made,
-//                    // for instance if the the phone number format is not valid.
-//                    Log.w(TAG, "onVerificationFailed", e);
-//                    Toast.makeText(post_login.this, "Check Your Phone Number", Toast.LENGTH_SHORT).show();
-//
-//                    if (e instanceof FirebaseAuthInvalidCredentialsException) {
-//                        // Invalid request
-//                        // ...
-//                    } else if (e instanceof FirebaseTooManyRequestsException) {
-//                        // The SMS quota for the project has been exceeded
-//                        // ...
-//                    }
-//                    // Show a message and update the UI
-//                    // ...
-//                }
-//
-//                @Override
-//                public void onCodeSent(String verificationId, PhoneAuthProvider.ForceResendingToken token) {
-//                    // The SMS verification code has been sent to the provided phone number, we
-//                    // now need to ask the user to enter the code and then construct a credential
-//                    // by combining the code with a verification ID.
-//                    Log.d(TAG, "onCodeSent:" + verificationId);
-//                    // Save verification ID and resending token so we can use them later
-//                    mVerificationId = verificationId;
-//                    mResendToken = token;
-//                }
-//            });
-//        }
-//    }
-//    private void signInWithPhoneAuthCredential(PhoneAuthCredential credential) {
-//        mAuth.signInWithCredential(credential)
-//                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<AuthResult> task) {
-//                        if (task.isSuccessful()) {
-//                            // Sign in success, update UI with the signed-in user's information
-//                            Log.d(TAG, "signInWithCredential:success");
-//                            FirebaseUser user = task.getResult().getUser();
-//                        } else {
-//                            // Sign in failed, display a message and update the UI
-//                            Log.w(TAG, "signInWithCredential:failure", task.getException());
-//                            if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
-//                                // The verification code entered was invalid
-//                            }
-//                        }
-//                    }
-//                });
-//    }
+
+        @Override
+    protected void onStart() {
+        super.onStart();
+
+            System.out.println(sharedPreference.getFavorites(post_login.this).size());
+            System.out.println(sharedPreference_doctor.getFavorites(post_login.this).size());
+
+        if(sharedPreference.getFavorites(post_login.this).size()>0
+                &&sharedPreference.getFavorites(post_login.this).get(0).getPhone()!=null){
+            startActivity(new Intent(post_login.this,student.class));
+        }
+
+            else if(sharedPreference_doctor.getFavorites(post_login.this).size()>0
+                         &&sharedPreference_doctor.getFavorites(post_login.this).get(0).getMajor()!=null ){
+                startActivity(new Intent(post_login.this,doctor.class));
+            }
+
+
+    }
 }

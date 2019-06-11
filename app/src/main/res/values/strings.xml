@@ -3,5 +3,7 @@
     <string name="FACEBOOK_APP_ID">2101199916616324</string>
     <string name="ACCOUNT_KIT_CLIENT_TOKEN">0b8aea1db0bd4102dab7d933943007b8</string>
     <string name="ak_login_protocol_scheme">2101199916616324</string>
+    <string name="registration">Registration</string>
+    <string name="log_in">log in</string>
 
 </resources>

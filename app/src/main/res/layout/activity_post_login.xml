@@ -3,28 +3,34 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="@drawable/gradiantback"
     android:orientation="vertical"
-    android:layout_height="match_parent"
-    tools:context=".post_login"
-    android:layout_margin="10dp">
+    tools:context=".post_login">
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="250dp"
         app:srcCompat="@drawable/logo" />
 
     <Button
         android:id="@+id/login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="250dp"
-        android:text="log in" />
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:background="@drawable/common_google_signin_btn_text_dark_normal_background"
+        android:text="@string/log_in" />
 
     <Button
         android:id="@+id/register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Registration" />
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:background="@drawable/common_google_signin_btn_text_dark_normal_background"
+        android:text="@string/registration" />
 
 </LinearLayout>

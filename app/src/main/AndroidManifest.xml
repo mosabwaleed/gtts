@@ -4,48 +4,59 @@
     package="com.zu.gtts">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/zu_icon"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/zu_icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".verify_code"></activity>
-        <activity android:name=".post_login" />
+        <activity android:name=".location"></activity>
+        <activity android:name=".show_reports" />
+        <activity android:name=".student_list" />
+        <activity android:name=".doctor" />
+        <activity android:name=".student_login" />
+        <activity android:name=".half_student_report" />
+        <activity android:name=".Registration" />
         <activity android:name=".student" />
-        <activity android:name=".Registration">
+        <activity android:name=".post_login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <meta-data android:name="com.facebook.accountkit.ApplicationName"
+        <meta-data
+            android:name="com.facebook.accountkit.ApplicationName"
             android:value="@string/app_name" />
-        <meta-data android:name="com.facebook.sdk.ApplicationId"
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/FACEBOOK_APP_ID" />
-        <meta-data android:name="com.facebook.accountkit.ClientToken"
+        <meta-data
+            android:name="com.facebook.accountkit.ClientToken"
             android:value="@string/ACCOUNT_KIT_CLIENT_TOKEN" />
-        <meta-data android:name="com.facebook.accountkit.FacebookAppEventsEnabled"
-            android:value="false"/>
+        <meta-data
+            android:name="com.facebook.accountkit.FacebookAppEventsEnabled"
+            android:value="false" />
+
         <activity
             android:name="com.facebook.accountkit.ui.AccountKitActivity"
             android:theme="@style/AppLoginTheme"
             tools:replace="android:theme" />
-
         <activity android:name="com.facebook.accountkit.ui.AccountKitEmailRedirectActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
+
                 <data android:scheme="@string/ak_login_protocol_scheme" />
             </intent-filter>
         </activity>
-
-
     </application>
 
 </manifest>
