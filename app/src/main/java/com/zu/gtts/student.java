@@ -179,4 +179,14 @@ public class student extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    public void onBackPressed() {
+        if(flag){Intent a = new Intent(Intent.ACTION_MAIN);
+            a.addCategory(Intent.CATEGORY_HOME);
+            a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(a);}
+        else {
+        super.onBackPressed();}
+    }
 }
