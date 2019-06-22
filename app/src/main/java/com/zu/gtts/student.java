@@ -30,11 +30,8 @@ public class student extends AppCompatActivity {
     ArrayList<Info> arrayList;
     Button report,location;
     public static boolean flag;
-
     public int i;
-
     DatabaseReference databaseReference;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,7 +44,6 @@ public class student extends AppCompatActivity {
         phone = findViewById(R.id.phone);
         report = findViewById(R.id.report);
         location = findViewById(R.id.location);
-
         i =0;
         sharedPreference = new SharedPreference();
         arrayList = new ArrayList<>();
@@ -63,7 +59,6 @@ public class student extends AppCompatActivity {
         phone.setText("Phone Number : "+arrayList.get(0).getPhone());
         flag = true;
         }
-
         else {
             name.setText("Name : "+getIntent().getStringExtra("name"));
             id.setText("ID : "+getIntent().getStringExtra("id"));
@@ -75,7 +70,6 @@ public class student extends AppCompatActivity {
             location.setText("Show Current Location");
             flag = false;
         }
-
         location.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -91,20 +85,15 @@ public class student extends AppCompatActivity {
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                             String lat = dataSnapshot.child("lat").getValue(String.class);
                             String lng = dataSnapshot.child("lng").getValue(String.class);
-
                            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.com/maps/@" + lat + "," + lng+",20z")));
                         }
-
                         @Override
                         public void onCancelled(@NonNull DatabaseError databaseError) {
-
                         }
                     });
                 }
             }
         });
-
-
         report.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -114,12 +103,10 @@ public class student extends AppCompatActivity {
                 else {
                     databaseReference = FirebaseDatabase.getInstance().getReference("student")
                             .child(getIntent().getStringExtra("id"));
-
                     databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                             i=0;
-
                             for(DataSnapshot d : dataSnapshot.getChildren()){
                                 i++;
                             }
@@ -137,7 +124,6 @@ public class student extends AppCompatActivity {
                                 alertDialog.setTitle("Number of Report");
                                 int number = i-2;
                                 alertDialog.setMessage("Student Have "+ number+" Number of Report please select number you want to show");
-
                                 final EditText input = new EditText(student.this);
                                 input.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);;
                                 LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
@@ -145,7 +131,6 @@ public class student extends AppCompatActivity {
                                         LinearLayout.LayoutParams.MATCH_PARENT);
                                 input.setLayoutParams(lp);
                                 alertDialog.setView(input);
-
                                 alertDialog.setPositiveButton("Submit", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
@@ -161,25 +146,20 @@ public class student extends AppCompatActivity {
                                 }).setNeutralButton("Cancle", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-
                                     }
                                 });
 
                                 alertDialog.show();
                             }
                         }
-
                         @Override
                         public void onCancelled(@NonNull DatabaseError databaseError) {
-
                         }
                     });
-
                 }
             }
         });
     }
-
     @Override
     public void onBackPressed() {
         if(flag){Intent a = new Intent(Intent.ACTION_MAIN);

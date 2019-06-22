@@ -75,17 +75,6 @@ public class post_login extends AppCompatActivity {
                 new AlertDialog.Builder(post_login.this)
                         .setTitle("Choose please")
                 .setMessage("what do U want login AS ?")
-                        .setPositiveButton("Doctor", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                Intent intent = new Intent(post_login.this,student_login.class);
-                                intent.putExtra("key","doctors");
-                                startActivity(intent);
-
-
-
-                            }
-                        })
                         .setNegativeButton("Student", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
@@ -95,9 +84,12 @@ public class post_login extends AppCompatActivity {
 
                             }
                         })
-                        .setNeutralButton("Supervisor", new DialogInterface.OnClickListener() {
+                        .setNeutralButton("doctor", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
+                                Intent intent = new Intent(post_login.this,student_login.class);
+                                intent.putExtra("key","doctors");
+                                startActivity(intent);
 
                             }
                         }).show();
